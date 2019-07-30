@@ -12,7 +12,7 @@ export default function Points({ winner, points }) {
   console.log('innerpoints', points)
   return (
     <div>
-      <h3>Score X : {Xpoint ? points.X + 1 : points.X}, O : {Opoint ? points.O + 1 : points.O}</h3>
+      <h3 class="score">Score X : <span style={{ color: 'red' }}>{Xpoint ? points.X + 1 : points.X}</span> , O : <span style={{ color: 'blue' }}>{Opoint ? points.O + 1 : points.O}</span></h3>
     </div>
   )
 }

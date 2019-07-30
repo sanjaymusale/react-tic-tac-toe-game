@@ -75,7 +75,9 @@ export default class Game extends React.Component {
     return (
       <div className="container">
         <div className="game">
-          <div><h3>{status}</h3></div>
+          <div>
+            <h3 className={winner ? 'winner' : 'nextPlayer'}>{status}</h3>
+          </div>
           <Points winner={winner} points={this.state.points} />
         </div>
         <div className="game-board">
