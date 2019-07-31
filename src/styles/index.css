@@ -88,8 +88,10 @@ body {
 }
 
 .winner {
+	font-weight: bold;
 	font-size: 24px;
 	color: blue;
+	animation: 0.5s shake infinite alternate;
 }
 
 .nextPlayer {
@@ -116,5 +118,36 @@ body {
 	}
 	.button {
 		margin-top: 10px;
+	}
+}
+
+@keyframes shake {
+	0%,
+	100% {
+		/* Defines the properties at these frames */
+		color: rgb(175, 5, 5);
+	}
+
+	50% {
+		/* Defines the properties at these frames */
+		color: rgb(243, 101, 101);
+	}
+	0% {
+		transform: skewX(-15deg);
+	}
+	5% {
+		transform: skewX(15deg);
+	}
+	10% {
+		transform: skewX(-15deg);
+	}
+	15% {
+		transform: skewX(15deg);
+	}
+	20% {
+		transform: skewX(0deg);
+	}
+	100% {
+		transform: skewX(0deg);
 	}
 }
