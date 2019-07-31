@@ -8,22 +8,30 @@ body {
 }
 
 .container {
-	margin-top: 20px;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 500px;
 	flex-direction: column;
-	background-color: aliceblue;
+}
+.left {
+	flex: 30%;
+	background-color: #f1f1f1;
+	padding: 20px;
+}
+.right {
+	flex: 70%;
+	justify-content: center;
+	align-items: center;
 }
 .game {
 	display: flex;
-	width: 30%;
-	justify-content: space-around;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.game div {
+	margin: 25px;
 }
 .game-board {
 	margin-top: 20px;
-	width: 30%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -40,7 +48,7 @@ body {
 }
 .game-info {
 	display: flex;
-	width: 20%;
+	flex-wrap: wrap;
 	justify-content: center;
 }
 .square {
@@ -67,11 +75,16 @@ body {
 	padding: 20px;
 	width: 200px;
 	background-color: bisque;
-	border: 1px solid rgb(253, 206, 148);
+	border: 1px solid rgb(248, 201, 143);
 	outline: none;
 	font: 800;
+	cursor: pointer;
 	margin-right: 20px;
 	font-size: 14px;
+}
+
+.button:hover {
+	background-color: rgb(255, 178, 83);
 }
 
 .winner {
@@ -89,4 +102,19 @@ body {
 	font-weight: bold;
 	font-size: 24px;
 	color: rgb(238, 170, 43);
+}
+
+@media screen and (max-width: 425px) {
+	.game {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.game div {
+		margin: 0;
+	}
+	.button {
+		margin-top: 10px;
+	}
 }

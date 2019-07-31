@@ -74,57 +74,61 @@ export default class Game extends React.Component {
     console.log(this.state.points)
     return (
       <div className="container">
-        <div className="game">
-          <div>
-            <h3 className={winner ? 'winner' : 'nextPlayer'}>{status}</h3>
+        <div class="left">
+          <div className="game">
+            <div>
+              <h3 className={winner ? 'winner' : 'nextPlayer'}>{status}</h3>
+            </div>
+            <Points winner={winner} points={this.state.points} />
           </div>
-          <Points winner={winner} points={this.state.points} />
-        </div>
-        <div className="game-board">
-          <Board
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-          />
+          <div className="game-info">
 
-        </div>
-        <div className="game-info">
-
-          <div><button className="button" onClick={winner ? () => {
-            this.setState({
-              history: history.concat([{
-                squares: Array(9).fill(null)
-              }]),
-              points: Object.assign(this.state.points, {
-                'X': winner.Xpoint ? this.state.points.X + 1 : this.state.points.X,
-                'O': winner.Opoint ? this.state.points.O + 1 : this.state.points.O
-              })
-            })
-          }
-            :
-            () => {
+            <div><button className="button" onClick={winner ? () => {
               this.setState({
                 history: history.concat([{
                   squares: Array(9).fill(null)
                 }]),
                 points: Object.assign(this.state.points, {
-                  'X': this.state.points.X,
-                  'O': this.state.points.O
+                  'X': winner.Xpoint ? this.state.points.X + 1 : this.state.points.X,
+                  'O': winner.Opoint ? this.state.points.O + 1 : this.state.points.O
                 })
               })
             }
-          }
-          >New game</button>
-          </div>
+              :
+              () => {
+                this.setState({
+                  history: history.concat([{
+                    squares: Array(9).fill(null)
+                  }]),
+                  points: Object.assign(this.state.points, {
+                    'X': this.state.points.X,
+                    'O': this.state.points.O
+                  })
+                })
+              }
+            }
+            >New game</button>
+            </div>
 
-          <div>
-            <button className="button" onClick={() => {
-              this.setState({
-                history: history.concat([{
-                  squares: Array(9).fill(null)
-                }]),
-                points: { 'X': 0, 'O': 0 }
-              })
-            }}>Reset</button>
+            <div>
+              <button className="button" onClick={() => {
+                this.setState({
+                  history: history.concat([{
+                    squares: Array(9).fill(null)
+                  }]),
+                  points: { 'X': 0, 'O': 0 }
+                })
+              }}>Reset</button>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <div className="game-board">
+            <Board
+              squares={current.squares}
+              onClick={(i) => this.handleClick(i)}
+            />
+
           </div>
         </div>
       </div >
