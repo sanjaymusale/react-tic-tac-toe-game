@@ -4,7 +4,9 @@
 
 body {
 	margin: 0;
-	background-color: aliceblue;
+	background: url('bg.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .container {
@@ -13,7 +15,6 @@ body {
 }
 .left {
 	flex: 30%;
-	background-color: #f1f1f1;
 	padding: 20px;
 }
 .right {
@@ -74,8 +75,8 @@ body {
 .button {
 	padding: 20px;
 	width: 200px;
-	background-color: bisque;
-	border: 1px solid rgb(248, 201, 143);
+	background-color: rgb(44, 41, 250);
+	border: 1px solid rgb(35, 31, 255);
 	outline: none;
 	font: 800;
 	cursor: pointer;
@@ -84,7 +85,7 @@ body {
 }
 
 .button:hover {
-	background-color: rgb(255, 178, 83);
+	background-color: rgb(111, 109, 255);
 }
 
 .winner {

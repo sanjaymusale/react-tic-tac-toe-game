@@ -1,14 +1,15 @@
 import React from 'react';
 import Board from './board';
 import Points from './points';
+import { connect } from 'react-redux'
+import { setScore } from './store/action'
 
-export default class Game extends React.Component {
+class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
 
       squares: Array(9).fill(null),
-      points: { 'X': 0, 'O': 0 },
       xIsNext: true,
     };
   }
@@ -59,11 +60,13 @@ export default class Game extends React.Component {
         this.setState({
           squares: Array(9).fill(null),
         })
-      }, 2000)
+      }, 3000)
     }
   }
 
   updatePoints = (winner) => {
+    const { setScore } = this.props
+    const { X, O } = this.props.score
     if (winner) {
       let score = {
         'X': winner.winner === 'X' ? 1 : 0,
@@ -72,14 +75,15 @@ export default class Game extends React.Component {
       setTimeout(() => {
         this.setState((prev) => ({
           squares: Array(9).fill(null),
-          points: { 'X': prev.points.X + score.X, 'O': prev.points.O + score.O }
-        }))
-      }, 2000)
-
+        }), () => {
+          setScore({ 'X': X + score.X, 'O': O + score.O })
+        })
+      }, 3000)
     }
   }
   render() {
     const squares = this.state.squares
+    const { setScore } = this.props
     const winner = this.calculateWinner(squares);
     let status;
     if (winner) {
@@ -87,7 +91,6 @@ export default class Game extends React.Component {
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
-    console.log('state', this.state.points)
     return (
       <div className="container" >
         {
@@ -101,16 +104,15 @@ export default class Game extends React.Component {
             <div>
               <h3 className={winner ? 'winner' : 'nextPlayer'}>{status}</h3>
             </div>
-            <Points winner={winner} points={this.state.points} />
+            <Points score={this.props.score} />
           </div>
           <div className="game-info">
             <div>
               <button className="button" onClick={() => {
                 this.setState({
                   squares: Array(9).fill(null),
-                  points: { 'X': 0, 'O': 0 },
                   xIsNext: true
-                })
+                }, () => setScore({ 'X': 0, 'O': 0 }))
               }}>Reset</button>
             </div>
           </div>
@@ -129,3 +131,7 @@ export default class Game extends React.Component {
   }
 }
 
+export default connect(
+  (state) => { return { score: state.score } },
+  { setScore }
+)(Game)
