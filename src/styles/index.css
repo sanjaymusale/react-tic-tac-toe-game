@@ -27,9 +27,11 @@ body {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 20px;
 }
 .game div {
 	margin: 20px;
+	margin-top: 25px;
 }
 .game-board {
 	margin-top: 20px;
@@ -51,6 +53,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin-bottom: 20px;
 }
 .square {
 	padding: 10px;
@@ -89,13 +92,23 @@ body {
 }
 
 .winner {
+	background-color: rgba(0, 60, 255, 0.1);
+	padding: 14px;
+	width: 200px;
+	border: none;
 	font-weight: bold;
 	font-size: 24px;
+	box-shadow: 0 0 20px rgb(117, 117, 117);
 	color: blue;
 	animation: 0.5s shake infinite alternate;
 }
 
 .nextPlayer {
+	background-color: rgba(255, 0, 0, 0.1);
+	padding: 14px;
+	width: 200px;
+	border: none;
+	box-shadow: 0 0 20px rgb(117, 117, 117);
 	font-weight: bold;
 	font-size: 24px;
 	color: rgb(0, 26, 144);

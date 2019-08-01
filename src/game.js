@@ -20,9 +20,7 @@ class Game extends React.Component {
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
-
       squares: squares,
-
       xIsNext: !this.state.xIsNext,
     });
   }
@@ -101,7 +99,7 @@ class Game extends React.Component {
 
         <div className="game">
           <div>
-            <span className={winner ? 'winner' : 'nextPlayer'}>{status}</span>
+            <button className={winner ? 'winner' : 'nextPlayer'}>{status}</button>
           </div>
           <Points score={this.props.score} />
         </div>
