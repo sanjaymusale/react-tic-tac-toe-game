@@ -4,7 +4,6 @@ import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './reducer'
 
 
-
 export const configureStore = () => {
     const createAppStore = applyMiddleware()(createStore);
     const persistConfig = { key: 'root', blacklist: [], storage };

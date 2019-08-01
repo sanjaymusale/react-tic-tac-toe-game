@@ -2,8 +2,10 @@ import React from 'react'
 
 export default function Points({ score }) {
   return (
-    <div>
-      <h3 className="score">Score X : <span style={{ color: 'red' }}>{score.X}</span> , O : <span style={{ color: 'blue' }}>{score.O}</span></h3>
+    <div className="score">
+      {/* <h3 className="score">Score X : <span style={{ color: 'red' }}>{score.X}</span> , O : <span style={{ color: 'blue' }}>{score.O}</span></h3> */}
+      <div><button>X</button><button>0</button></div>
+      <div><button>O</button><button>0</button></div>
     </div>
   )
 }

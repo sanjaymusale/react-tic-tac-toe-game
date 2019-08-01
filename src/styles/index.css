@@ -29,7 +29,7 @@ body {
 	align-items: center;
 }
 .game div {
-	margin: 25px;
+	margin: 20px;
 }
 .game-board {
 	margin-top: 20px;
@@ -98,13 +98,29 @@ body {
 .nextPlayer {
 	font-weight: bold;
 	font-size: 24px;
-	color: green;
+	color: rgb(0, 26, 144);
 }
 
 .score {
-	font-weight: bold;
-	font-size: 24px;
-	color: rgb(238, 170, 43);
+	display: flex;
+}
+.score button:first-child {
+	border: 1px solid #f7f7f7;
+	background-color: #f7c744;
+	outline: none;
+	color: rgba(255, 0, 0, 0.63);
+	padding: 15px;
+	font-size: 18px;
+	font-weight: bolder;
+}
+
+.score button:last-child {
+	border: 1px solid #ffc524;
+	background-color: #f3e1b0;
+	outline: none;
+	padding: 15px;
+	font-size: 18px;
+	font-weight: bolder;
 }
 
 @media screen and (max-width: 425px) {
