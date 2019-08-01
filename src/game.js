@@ -2,25 +2,24 @@ import React from 'react';
 import Board from './board';
 import Points from './points';
 import { connect } from 'react-redux'
-import { setScore } from './store/action'
+import { setScore, setSquare, reset, restart } from './store/action'
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null),
       xIsNext: true,
     };
   }
 
   handleClick(i) {
-    const squares = this.state.squares.slice();
+    const squares = this.props.squares.slice();
     if (this.calculateWinner(squares) || squares[i]) {
       return;
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.props.setSquare(squares)
     this.setState({
-      squares: squares,
       xIsNext: !this.state.xIsNext,
     });
   }
@@ -54,9 +53,7 @@ class Game extends React.Component {
   restart = (squares) => {
     if (!squares.includes(null)) {
       setTimeout(() => {
-        this.setState({
-          squares: Array(9).fill(null),
-        })
+        this.props.restart(Array(9).fill(null))
       }, 2000)
     }
   }
@@ -69,18 +66,18 @@ class Game extends React.Component {
         'X': winner.winner === 'X' ? 1 : 0,
         'O': winner.winner === 'O' ? 1 : 0,
       }
+
       setTimeout(() => {
-        this.setState((prev) => ({
-          squares: Array(9).fill(null),
-        }), () => {
-          setScore({ 'X': X + score.X, 'O': O + score.O })
-        })
+        setScore(
+          {
+            score: { 'X': X + score.X, 'O': O + score.O },
+            squares: Array(9).fill(null)
+          })
       }, 2000)
     }
   }
   render() {
-    const squares = this.state.squares
-    const { setScore } = this.props
+    const { squares, reset } = this.props
     const winner = this.calculateWinner(squares);
     let status;
     if (winner) {
@@ -106,10 +103,14 @@ class Game extends React.Component {
         <div className="game-info">
 
           <button className="button" onClick={() => {
+            reset(
+              {
+                score: { 'X': 0, 'O': 0 },
+                squares: Array(9).fill(null)
+              })
             this.setState({
-              squares: Array(9).fill(null),
               xIsNext: true
-            }, () => setScore({ 'X': 0, 'O': 0 }))
+            })
           }}>Reset</button>
 
         </div>
@@ -129,6 +130,6 @@ class Game extends React.Component {
 }
 
 export default connect(
-  (state) => { return { score: state.score } },
-  { setScore }
+  (state) => { return { score: state.score, squares: state.squares } },
+  { setScore, setSquare, reset, restart }
 )(Game)
