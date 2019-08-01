@@ -8,7 +8,6 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
       squares: Array(9).fill(null),
       xIsNext: true,
     };
@@ -60,7 +59,7 @@ class Game extends React.Component {
         this.setState({
           squares: Array(9).fill(null),
         })
-      }, 3000)
+      }, 2000)
     }
   }
 
@@ -78,7 +77,7 @@ class Game extends React.Component {
         }), () => {
           setScore({ 'X': X + score.X, 'O': O + score.O })
         })
-      }, 3000)
+      }, 2000)
     }
   }
   render() {
@@ -99,24 +98,24 @@ class Game extends React.Component {
             this.restart(squares)
           })()
         }
-        <div className="left">
-          <div className="game">
-            <div>
-              <h3 className={winner ? 'winner' : 'nextPlayer'}>{status}</h3>
-            </div>
-            <Points score={this.props.score} />
+
+        <div className="game">
+          <div>
+            <span className={winner ? 'winner' : 'nextPlayer'}>{status}</span>
           </div>
-          <div className="game-info">
-            <div>
-              <button className="button" onClick={() => {
-                this.setState({
-                  squares: Array(9).fill(null),
-                  xIsNext: true
-                }, () => setScore({ 'X': 0, 'O': 0 }))
-              }}>Reset</button>
-            </div>
-          </div>
+          <Points score={this.props.score} />
         </div>
+        <div className="game-info">
+
+          <button className="button" onClick={() => {
+            this.setState({
+              squares: Array(9).fill(null),
+              xIsNext: true
+            }, () => setScore({ 'X': 0, 'O': 0 }))
+          }}>Reset</button>
+
+        </div>
+
         <div className="right">
           <div className="game-board">
             <Board
