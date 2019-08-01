@@ -6,7 +6,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background: url('bg.png');
-	background-size: initial;
+	background-size: 100% 100vh;
 }
 
 .container {
@@ -78,17 +78,19 @@ body {
 .button {
 	padding: 20px;
 	width: 200px;
-	background-color: rgb(44, 41, 250);
+	background-color: rgb(111, 109, 255);
 	border: 1px solid rgb(35, 31, 255);
 	outline: none;
-	font: 800;
+	color: white;
+	font-weight: bold;
 	cursor: pointer;
 	margin-right: 20px;
 	font-size: 14px;
 }
 
 .button:hover {
-	background-color: rgb(111, 109, 255);
+	background-color: rgb(44, 41, 250);
+	color: white;
 }
 
 .winner {
